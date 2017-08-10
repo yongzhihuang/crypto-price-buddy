@@ -52,7 +52,7 @@ class PriceDisplay extends Component {
         <DailyStats currency={currency} />
 
         <AskBids currency={currency} />
-        <PriceTarget />
+        <PriceTarget currentPrice={this.state.price}/>
       </div>
     );
   }
