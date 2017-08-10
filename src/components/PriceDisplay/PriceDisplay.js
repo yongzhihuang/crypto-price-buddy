@@ -55,8 +55,8 @@ class PriceDisplay extends Component {
           <option value="ltc-eur">ltc-eur</option>
         </select>
 
-        <div className="price"><a href="https://www.gdax.com/trade/ETH-USD" target="_blank" rel="noopener noreferrer">${this.state.price}</a></div>
         <DailyStats />
+        <div className="price"><a href="https://www.gdax.com/trade/ETH-USD" target="_blank" rel="noopener noreferrer">${this.state.price}</a></div>
 
         <AskBids />
         <PriceTarget />
