@@ -1,0 +1,46 @@
+.currency-type {
+  font-size: 10px;
+  margin-top: 25px;
+  margin-bottom: -25px;
+  border: none;
+  color: white;
+  padding: 0px;
+  background: #3b5998;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.price-display {
+  display: flex;           /* establish flex container */
+  flex-direction: column;  /* make main axis vertical */
+  justify-content: center; /* center items vertically, in this case */
+  align-items: center;     /* center items horizontally, in this case */
+  height: 100%;
+}
+
+.price {
+  color: white;
+  font-size: 200px;
+  font-weight: bold;
+  width: 100%;
+  text-align: center;     /* will center text in <p>, which is not a flex item */
+}
+
+@media only screen and (max-width: 600px) {
+  .currency-type {
+    font-size: 20px;
+  }
+
+  .set-target {
+    width: 50%;
+  }
+
+  .price {
+    color: white;
+    font-size: 95px;
+    font-weight: bold;
+    width: 100%;
+    margin: 0px;
+    text-align: center;     /* will center text in <p>, which is not a flex item */
+  }
+}

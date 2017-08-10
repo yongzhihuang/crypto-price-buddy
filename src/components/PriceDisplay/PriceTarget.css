@@ -1,0 +1,25 @@
+.price-target-container {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.set-target {
+  cursor: pointer;
+  width: 200px;
+  margin: 0 auto;
+  padding: 5px;
+  border: solid 1px white;
+  border-radius: 5px;
+  color: white;
+}
+
+.set-target:hover {
+  background: black;
+  color: white;
+  border-color: black;
+}
+
+.target {
+  margin-top: 10px;
+  color: white;
+}

@@ -1,0 +1,32 @@
+.App {
+  text-align: center;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.table>thead>tr {
+  font-weight: bold;
+}
+
+.table>tbody>tr:hover {
+  cursor: pointer;
+  background: transparent;
+  font-weight: bold;
+}
+
+.red {
+  color: #ff2d2d;
+}
+
+.green {
+  color: #11c711;
+}
+
+@media only screen and (max-width: 600px) {
+  .App {
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+    margin: 0 auto;
+  }
+}
