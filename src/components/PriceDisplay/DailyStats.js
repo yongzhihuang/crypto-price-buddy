@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './DailyStats.css';
 
-import { round } from '../../utils/priceFormatter';
+import { round, numberWithCommas } from '../../utils/priceFormatter';
+
 class DailyStats extends Component {
   constructor(props) {
     super(props);
@@ -49,11 +50,10 @@ class DailyStats extends Component {
     }
     return (
       <div className="daily-stats">
-        <p><u><b>24 Hour Stats</b></u></p>
-        <p><b>Open:</b> {dailyStats.open}</p>
-        <p><b>High:</b> {dailyStats.high}</p>
-        <p><b>Low:</b> {dailyStats.low}</p>
-        <p><b>Volume:</b> {dailyStats.volume}</p>
+        Open: <b>{dailyStats.open}</b>&nbsp;/&nbsp;
+        High: <b>{dailyStats.high}</b>&nbsp;/&nbsp;
+        Low: <b>{dailyStats.low}</b>&nbsp;/&nbsp;
+        Volume: <b>{numberWithCommas(dailyStats.volume)}</b>
       </div>
     );
   }

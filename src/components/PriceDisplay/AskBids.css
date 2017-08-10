@@ -1,7 +1,8 @@
 .askbids {
   background: white;
   padding: 5px;
-  margin: 5px;
+  margin-top: -17px;
+  margin-bottom: 10px;
   font-weight: bold;
   border-radius: 5px;
 }
