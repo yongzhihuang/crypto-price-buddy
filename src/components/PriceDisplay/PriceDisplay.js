@@ -36,15 +36,16 @@ class PriceDisplay extends Component {
   }
 
   componentDidMount() {
+    this.fetchPrice();
+
     setInterval(() => {
       this.fetchPrice();
     }, 10000);
   }
 
   render() {
-    this.fetchPrice();
     const currency = this.props.currency;
-    const symbol = (this.props.currency.indexOf('-eur') === -1) ? '$' : '€';
+    const symbol = (currency.indexOf('-eur') === -1) ? '$' : '€';
 
     return (
       <div className="price-display">

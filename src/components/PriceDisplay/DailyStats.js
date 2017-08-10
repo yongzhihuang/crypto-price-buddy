@@ -36,13 +36,14 @@ class DailyStats extends Component {
   }
 
   componentDidMount() {
+    this.fetchDailyStats();
+
     setInterval(() => {
       this.fetchDailyStats();
     }, 10000);
   }
 
   render() {
-    this.fetchDailyStats();
     const dailyStats = this.state.dailyStats;
 
     if (!dailyStats) {

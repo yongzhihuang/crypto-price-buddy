@@ -40,13 +40,14 @@ class AskBids extends Component {
   }
 
   componentDidMount() {
+    this.fetchAskBids();
+
     setInterval(() => {
       this.fetchAskBids();
     }, 10000);
   }
 
   render() {
-    this.fetchAskBids();
     const askBids = this.state.askBids;
 
     if (!askBids) {

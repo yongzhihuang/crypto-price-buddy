@@ -22,7 +22,7 @@
 
 .price {
   color: white;
-  font-size: 200px;
+  font-size: 150px;
   font-weight: bold;
   width: 100%;
   text-align: center;     /* will center text in <p>, which is not a flex item */
