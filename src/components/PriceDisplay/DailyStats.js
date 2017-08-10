@@ -14,7 +14,7 @@ class DailyStats extends Component {
   }
 
   fetchDailyStats() {
-    const currency = this.props.currencyType || 'eth-usd';
+    const currency = this.props.currency || 'eth-usd';
     axios.get(`https://api.gdax.com/products/${currency}/stats`)
     .then((res) => {
       const data = res.data;
@@ -36,13 +36,13 @@ class DailyStats extends Component {
   }
 
   componentDidMount() {
-    this.fetchDailyStats();
     setInterval(() => {
       this.fetchDailyStats();
     }, 10000);
   }
 
   render() {
+    this.fetchDailyStats();
     const dailyStats = this.state.dailyStats;
 
     if (!dailyStats) {

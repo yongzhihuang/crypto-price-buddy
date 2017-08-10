@@ -18,7 +18,8 @@ class PriceDisplay extends Component {
   }
 
   fetchPrice() {
-    const currency = this.props.currencyType || 'eth-usd';
+    const currency = this.props.currency || 'eth-usd';
+
     axios.get(`https://api.gdax.com/products/${currency}/ticker`)
     .then((res) => {
       if (res.data.price) {
@@ -35,30 +36,22 @@ class PriceDisplay extends Component {
   }
 
   componentDidMount() {
-    this.fetchPrice();
     setInterval(() => {
       this.fetchPrice();
     }, 10000);
   }
 
   render() {
+    this.fetchPrice();
+    const currency = this.props.currency;
+    const symbol = (this.props.currency.indexOf('-eur') === -1) ? '$' : '€';
+
     return (
       <div className="price-display">
-        <select className="currency-type">
-          <option value="eth-usd">eth-usd</option>
-          <option value="eth-eur">eth-eur</option>
+        <div className="price"><a href={`https://www.gdax.com/trade/${currency}`} target="_blank" rel="noopener noreferrer">{symbol}{this.state.price}</a></div>
+        <DailyStats currency={currency} />
 
-          <option value="btc-usd">btc-usd</option>
-          <option value="btc-eur">btc-eur</option>
-
-          <option value="ltc-usd">ltc-usd</option>
-          <option value="ltc-eur">ltc-eur</option>
-        </select>
-
-        <div className="price"><a href="https://www.gdax.com/trade/ETH-USD" target="_blank" rel="noopener noreferrer">${this.state.price}</a></div>
-        <DailyStats />
-
-        <AskBids />
+        <AskBids currency={currency} />
         <PriceTarget />
       </div>
     );

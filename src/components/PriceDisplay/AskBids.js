@@ -17,8 +17,9 @@ class AskBids extends Component {
     };
   }
 
+
   fetchAskBids() {
-    const currency = this.props.currencyType || 'eth-usd';
+    const currency = this.props.currency || 'eth-usd';
     axios.get(`https://api.gdax.com/products/${currency}/book`)
     .then((res) => {
       const data = res.data;
@@ -39,24 +40,24 @@ class AskBids extends Component {
   }
 
   componentDidMount() {
-    this.fetchAskBids();
     setInterval(() => {
       this.fetchAskBids();
     }, 10000);
   }
 
   render() {
+    this.fetchAskBids();
     const askBids = this.state.askBids;
 
     if (!askBids) {
       return null;
     }
 
-
+    const symbol = (this.props.currency.indexOf('-eur') === -1) ? '$' : '€';
     return (
       <div className="askbids">
-        <div className="asks">Sells: ${askBids.asksPrice} / {askBids.asksAmount} Orders</div>
-        <div className="bids">Buys: ${askBids.bidsPrice} / {askBids.bidsAmount} Orders</div>
+        <div className="asks">Sells: {symbol}{askBids.asksPrice} / {askBids.asksAmount} Orders</div>
+        <div className="bids">Buys: {symbol}{askBids.bidsPrice} / {askBids.bidsAmount} Orders</div>
       </div>
     );
   }
