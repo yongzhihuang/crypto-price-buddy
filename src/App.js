@@ -11,6 +11,11 @@ class App extends Component {
       <div className="App">
         <PriceDisplay />
         <TopCrypto />
+
+        <div className="about">
+          <p>Don't forget to add us to home screen</p>
+          <p>Made by <a href="https://www.twitter.com/whyzhi">@whyzhi</a></p>
+        </div>
       </div>
     );
   }
