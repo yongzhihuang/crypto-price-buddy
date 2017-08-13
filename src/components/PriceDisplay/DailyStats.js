@@ -49,12 +49,13 @@ class DailyStats extends Component {
     if (!dailyStats) {
       return null;
     }
+
     return (
       <div className="daily-stats">
-        Open: <b>{dailyStats.open}</b>&nbsp;/&nbsp;
-        High: <b>{dailyStats.high}</b>&nbsp;/&nbsp;
-        Low: <b>{dailyStats.low}</b>&nbsp;/&nbsp;
-        Volume: <b>{numberWithCommas(dailyStats.volume)}</b>
+        <p>Open: <b>{dailyStats.open}</b></p>
+        <p>High: <b>{dailyStats.high}</b></p>
+        <p>Low: <b>{dailyStats.low}</b></p>
+        <p>Volume: <b>{numberWithCommas(dailyStats.volume)}</b></p>
       </div>
     );
   }

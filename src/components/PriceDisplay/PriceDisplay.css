@@ -6,10 +6,15 @@
   text-transform: uppercase;
   text-align: center;
   margin: 0 auto;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
   width: 100%;
   outline: none;
   cursor: pointer;
+}
+
+.currency-symbol {
+  font-size: 75px;
+  padding-right: 5px;
 }
 
 .price-display {
@@ -39,7 +44,7 @@
 
   .price {
     color: white;
-    font-size: 95px;
+    font-size: 100px;
     font-weight: bold;
     width: 100%;
     margin: 0px;

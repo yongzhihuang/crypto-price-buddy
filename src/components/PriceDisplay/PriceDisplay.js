@@ -49,10 +49,10 @@ class PriceDisplay extends Component {
 
     return (
       <div className="price-display">
-        <div className="price"><a href={`https://www.gdax.com/trade/${currency}`} target="_blank" rel="noopener noreferrer">{symbol}{this.state.price}</a></div>
-        <DailyStats currency={currency} />
+        <div className="price"><a href={`https://www.gdax.com/trade/${currency}`} target="_blank" rel="noopener noreferrer"><span className="currency-symbol">{symbol}</span>{this.state.price}</a></div>
 
         <AskBids currency={currency} />
+        <DailyStats currency={currency} />
         <PriceTarget currentPrice={this.state.price}/>
       </div>
     );
