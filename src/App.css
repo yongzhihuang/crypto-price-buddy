@@ -8,10 +8,12 @@
   font-weight: bold;
 }
 
-.table>tbody>tr:hover {
-  cursor: pointer;
-  background: transparent;
-  font-weight: bold;
+.table tr:hover {
+  background: transparent !important;
+}
+
+.table td.no-align {
+  text-align: left;
 }
 
 .red {

@@ -3,6 +3,8 @@ import './App.css';
 
 import PriceDisplay from './components/PriceDisplay/PriceDisplay';
 import TopCrypto from './components/TopCrypto/TopCrypto';
+import LatestNews from './components/LatestNews/LatestNews';
+
 
 class App extends Component {
   constructor(props) {
@@ -47,6 +49,7 @@ class App extends Component {
 
         <PriceDisplay currency={this.state.currencyType} />
         <TopCrypto />
+        <LatestNews />
 
         <div className="about">
           <p>Donate ETH: 0x79aCad1654fd277096571E536b9Bd49b33c024e4</p>
