@@ -6,6 +6,8 @@ import AskBids from './AskBids';
 import DailyStats from './DailyStats';
 import PriceTarget from './PriceTarget';
 
+import AllPrices from './AllPrices';
+
 import { round } from '../../utils/priceFormatter';
 
 class PriceDisplay extends Component {
@@ -19,7 +21,7 @@ class PriceDisplay extends Component {
 
   fetchPrice() {
     const currency = this.props.currency || 'eth-usd';
-
+console.log('fetch eth')
     axios.get(`https://api.gdax.com/products/${currency}/ticker`)
     .then((res) => {
       if (res.data.price) {
@@ -36,6 +38,10 @@ class PriceDisplay extends Component {
   }
 
   componentDidMount() {
+    if (this.props.currency === 'all') {
+      return;
+    }
+
     this.fetchPrice();
 
     setInterval(() => {
@@ -46,6 +52,10 @@ class PriceDisplay extends Component {
   render() {
     const currency = this.props.currency;
     const symbol = (currency.indexOf('-eur') === -1) ? '$' : '€';
+
+    if (this.props.currency === 'all') {
+      return <AllPrices />;
+    }
 
     return (
       <div className="price-display">

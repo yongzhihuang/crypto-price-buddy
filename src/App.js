@@ -12,6 +12,8 @@ class App extends Component {
     this.setCurrencyType = this.setCurrencyType.bind(this);
     this.state = {
       currencyOptions: [
+        'all',
+
         'eth-usd',
         'eth-eur',
 
@@ -33,12 +35,12 @@ class App extends Component {
   }
 
   render() {
-    const optionsDOM = this.state.currencyOptions.map((currency) => {
+    const optionsDOM = this.state.currencyOptions.map((currency, idx) => {
       if (currency === window.localStorage.selectedCurrency) {
-        return <option value={currency} selected>{currency}</option>;
+        return <option key={idx} value={currency} selected>{currency}</option>;
       }
 
-      return <option value={currency} >{currency}</option>;
+      return <option key={idx} value={currency} >{currency}</option>;
     });
 
     return (

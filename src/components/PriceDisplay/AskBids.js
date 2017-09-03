@@ -17,7 +17,6 @@ class AskBids extends Component {
     };
   }
 
-
   fetchAskBids() {
     const currency = this.props.currency || 'eth-usd';
     axios.get(`https://api.gdax.com/products/${currency}/book`)
@@ -42,9 +41,17 @@ class AskBids extends Component {
   componentDidMount() {
     this.fetchAskBids();
 
-    setInterval(() => {
+    const refreshInterval = setInterval(() => {
       this.fetchAskBids();
     }, 10000);
+
+    this.setState({
+      interval: refreshInterval
+    });
+  }
+
+  componentWillUnmount() {
+    window.clearInterval(this.state.interval);
   }
 
   render() {

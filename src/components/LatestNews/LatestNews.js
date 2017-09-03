@@ -40,13 +40,11 @@ class LatestNews extends Component {
 
     const newsRows = news.map((news, index) => {
       const newsItem = news.data;
-      const newsItemLink = `https://reddit.com${newsItem.permalink}`;
 
       return (
         <tr key={index}>
-          <td className="no-align"><a href={newsItem.url} target="_blank">{newsItem.title}</a></td>
+          <td className="no-align"><a href={newsItem.url} target="_blank">{newsItem.title} ({moment.unix(newsItem.created_utc).fromNow()})</a></td>
           <td>{newsItem.subreddit_name_prefixed}</td>
-          <td>{moment.unix(newsItem.created).fromNow()}</td>
         </tr>
       );
     });
@@ -59,7 +57,6 @@ class LatestNews extends Component {
             <tr>
               <td>Headline</td>
               <td>Currency</td>
-              <td>Date</td>
             </tr>
           </thead>
           <tbody>

@@ -38,9 +38,17 @@ class DailyStats extends Component {
   componentDidMount() {
     this.fetchDailyStats();
 
-    setInterval(() => {
+    const refreshInterval = setInterval(() => {
       this.fetchDailyStats();
     }, 10000);
+
+    this.setState({
+      interval: refreshInterval
+    });
+  }
+
+  componentWillUnmount() {
+    window.clearInterval(this.state.interval);
   }
 
   render() {
