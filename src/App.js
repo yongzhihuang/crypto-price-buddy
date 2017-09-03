@@ -49,6 +49,10 @@ class App extends Component {
           {optionsDOM}
         </select>
 
+        <div className="display-notice">
+          Note: This site is best viewed on a small screen or mobile device.
+        </div>
+
         <PriceDisplay currency={this.state.currencyType} />
         <TopCrypto />
         <LatestNews />

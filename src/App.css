@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  width: 50%;
+  width: 495px;
   margin: 0 auto;
 }
 
@@ -30,10 +30,21 @@
   padding: 5px;
 }
 
+.display-notice {
+  display: block;
+  background: yellow;
+  color: black;
+  font-size: 16px;
+}
+
 @media only screen and (max-width:768px ) {
   .App {
     text-align: center;
     width: 100%;
     margin: 0 auto;
+  }
+
+  .display-notice {
+    display: none;
   }
 }
