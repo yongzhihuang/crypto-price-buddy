@@ -34,7 +34,7 @@
   text-align: center;     /* will center text in <p>, which is not a flex item */
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 768px) {
   .currency-type {
     font-size: 20px;
   }

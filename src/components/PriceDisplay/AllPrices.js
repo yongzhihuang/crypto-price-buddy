@@ -56,19 +56,19 @@ class AllPrices extends Component {
     const priceDisplay = this.state.currenciesData.map((currency, idx) => {
       if (currency) {
         return (
-          <div className="all-prices" key={idx}>
+          <li className="all-prices" key={idx}>
             <div className="all-currency-symbol">{currency.symbol}</div>
-            <a className="all-currency-price" href={`https://www.gdax.com/trade/${currency.symbol}`} target="_blank" rel="noopener noreferrer">{round(currency.price)}</a>
-          </div>
+            <a className="all-currency-price" href={`https://www.gdax.com/trade/${currency.symbol}`} target="_blank" rel="noopener noreferrer"><span className="currency-symbol">$</span>{round(currency.price)}</a>
+          </li>
         );
 
       }
     })
 
     return (
-      <div className="price-display">
+      <ul className="price-display-all">
         {priceDisplay}
-      </div>
+      </ul>
     );
   }
 }

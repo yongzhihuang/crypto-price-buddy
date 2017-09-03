@@ -60,6 +60,7 @@ class TopCrypto extends Component {
     return (
       <div className="top-crypto">
         <h2 className="top-title-label">Crypto Currency Ranking</h2>
+        <p><a href="https://www.coinbase.com/join/549343ba76ee492408000124">$10 Worth of FREE Bitcoin by <u>signing up with Coinbase</u></a></p>
         <table className="table table-hover top-table">
           <thead>
             <tr>
