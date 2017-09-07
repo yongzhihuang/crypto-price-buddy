@@ -40,7 +40,6 @@ class DailyStats extends Component {
   }
 
   componentWillReceiveProps(nextProp) {
-    window.clearTimeout(this.fetchRefresh);
     this.fetchDailyStats(nextProp);
   }
 

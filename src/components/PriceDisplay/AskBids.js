@@ -46,7 +46,6 @@ class AskBids extends Component {
   }
 
   componentWillReceiveProps(nextProp) {
-    window.clearTimeout(this.fetchRefresh);
     this.fetchAskBids(nextProp);
   }
 

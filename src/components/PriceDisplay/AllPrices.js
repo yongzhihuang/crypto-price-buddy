@@ -10,7 +10,12 @@ class AllPrices extends Component {
     super(props);
 
     this.state = {
-      currenciesData: []
+      currenciesData: [],
+      currencyLogos: {
+        'btc-usd': 'https://files.coinmarketcap.com/static/img/coins/32x32/bitcoin.png',
+        'eth-usd': 'https://files.coinmarketcap.com/static/img/coins/32x32/ethereum.png',
+        'ltc-usd': 'https://files.coinmarketcap.com/static/img/coins/32x32/litecoin.png'
+      }
     }
   }
 
@@ -53,7 +58,9 @@ class AllPrices extends Component {
       if (currency) {
         return (
           <li className="all-prices" key={idx}>
-            <div className="all-currency-symbol">{currency.symbol}</div>
+            <div className="all-currency-symbol">
+            <img alt={currency.symbol} src={this.state.currencyLogos[currency.symbol]} /> {currency.symbol}
+            </div>
             <a className="all-currency-price" href={`https://www.gdax.com/trade/${currency.symbol}`} target="_blank" rel="noopener noreferrer"><span className="currency-symbol">$</span>{round(currency.price)}</a>
           </li>
         );

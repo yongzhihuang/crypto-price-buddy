@@ -48,7 +48,11 @@ class PriceDisplay extends Component {
   }
 
   componentWillReceiveProps(nextProp) {
-    window.clearTimeout(this.fetchRefresh);
+    let id = window.setTimeout(function() {}, 0);
+
+    while (id--) {
+        window.clearTimeout(id); // will do nothing if no timeout with id is present
+    }
     this.fetchPrice(nextProp);
   }
 
