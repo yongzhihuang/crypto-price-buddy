@@ -17,8 +17,8 @@ class AskBids extends Component {
     };
   }
 
-  fetchAskBids() {
-    const currency = this.props.currency || 'eth-usd';
+  fetchAskBids(props) {
+    const currency = props.currency || 'eth-usd';
     axios.get(`https://api.gdax.com/products/${currency}/book`)
     .then((res) => {
       const data = res.data;
@@ -31,6 +31,9 @@ class AskBids extends Component {
             bidsAmount: round(data.bids[0][1])
           }
         });
+        this.fetchRefresh = setTimeout(() => {
+          this.fetchAskBids(props);
+        }, 10000);
       }
     })
     .catch((error) => {
@@ -38,20 +41,17 @@ class AskBids extends Component {
     });
   }
 
-  componentDidMount() {
-    this.fetchAskBids();
+  componentWillMount() {
+    this.fetchAskBids(this.props);
+  }
 
-    const refreshInterval = setInterval(() => {
-      this.fetchAskBids();
-    }, 10000);
-
-    this.setState({
-      interval: refreshInterval
-    });
+  componentWillReceiveProps(nextProp) {
+    window.clearTimeout(this.fetchRefresh);
+    this.fetchAskBids(nextProp);
   }
 
   componentWillUnmount() {
-    window.clearInterval(this.state.interval);
+    window.clearTimeout(this.fetchRefresh);
   }
 
   render() {

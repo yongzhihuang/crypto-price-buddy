@@ -30,26 +30,22 @@ class AllPrices extends Component {
       this.setState({
         currenciesData: result
       });
+
+      this.fetchRefresh = setTimeout(() => {
+        this.fetchALLPrices();
+      }, 10000);
     })
     .catch((error) => {
       console.error(error);
     })
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.fetchALLPrices();
-
-    const refreshInterval = setInterval(() => {
-      this.fetchALLPrices();
-    }, 10000);
-
-    this.setState({
-      interval: refreshInterval
-    });
   }
 
   componentWillUnmount() {
-    window.clearInterval(this.state.interval);
+    window.clearTimeout(this.fetchRefresh);
   }
 
   render() {
@@ -61,8 +57,8 @@ class AllPrices extends Component {
             <a className="all-currency-price" href={`https://www.gdax.com/trade/${currency.symbol}`} target="_blank" rel="noopener noreferrer"><span className="currency-symbol">$</span>{round(currency.price)}</a>
           </li>
         );
-
       }
+      return '';
     })
 
     return (

@@ -19,9 +19,9 @@ class PriceDisplay extends Component {
     }
   }
 
-  fetchPrice() {
-    const currency = this.props.currency || 'eth-usd';
-console.log('fetch eth')
+  fetchPrice(props) {
+    const currency = props.currency || 'eth-usd';
+
     axios.get(`https://api.gdax.com/products/${currency}/ticker`)
     .then((res) => {
       if (res.data.price) {
@@ -30,6 +30,9 @@ console.log('fetch eth')
           price
         });
         document.title = `$${price}`;
+        this.fetchRefresh = setTimeout(() => {
+          this.fetchPrice(props);
+        }, 10000);
       }
     })
     .catch((error) => {
@@ -37,16 +40,20 @@ console.log('fetch eth')
     });
   }
 
-  componentDidMount() {
+  componentWillMount() {
     if (this.props.currency === 'all') {
       return;
     }
+    this.fetchPrice(this.props);
+  }
 
-    this.fetchPrice();
+  componentWillReceiveProps(nextProp) {
+    window.clearTimeout(this.fetchRefresh);
+    this.fetchPrice(nextProp);
+  }
 
-    setInterval(() => {
-      this.fetchPrice();
-    }, 10000);
+  componentWillUnmount() {
+    window.clearTimeout(this.fetchRefresh);
   }
 
   render() {

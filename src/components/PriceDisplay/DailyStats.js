@@ -13,8 +13,8 @@ class DailyStats extends Component {
     }
   }
 
-  fetchDailyStats() {
-    const currency = this.props.currency || 'eth-usd';
+  fetchDailyStats(props) {
+    const currency = props.currency || 'eth-usd';
     axios.get(`https://api.gdax.com/products/${currency}/stats`)
     .then((res) => {
       const data = res.data;
@@ -28,6 +28,10 @@ class DailyStats extends Component {
         this.setState({
           dailyStats
         });
+
+        this.fetchRefresh = setTimeout(() => {
+          this.fetchDailyStats(props);
+        }, 10000);
       }
     })
     .catch((error) => {
@@ -35,20 +39,17 @@ class DailyStats extends Component {
     });
   }
 
-  componentDidMount() {
-    this.fetchDailyStats();
+  componentWillReceiveProps(nextProp) {
+    window.clearTimeout(this.fetchRefresh);
+    this.fetchDailyStats(nextProp);
+  }
 
-    const refreshInterval = setInterval(() => {
-      this.fetchDailyStats();
-    }, 10000);
-
-    this.setState({
-      interval: refreshInterval
-    });
+  componentWillMount() {
+    this.fetchDailyStats(this.props);
   }
 
   componentWillUnmount() {
-    window.clearInterval(this.state.interval);
+    window.clearTimeout(this.fetchRefresh);
   }
 
   render() {

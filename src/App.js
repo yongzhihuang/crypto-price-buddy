@@ -55,7 +55,7 @@ class App extends Component {
 
         <PriceDisplay currency={this.state.currencyType} />
         <TopCrypto />
-        <iframe width="100%" height="250" src="https://www.youtube.com/embed/OT5iufs218g" frameborder="0" allowfullscreen></iframe>
+        <iframe title="yt-embed-crypto" width="100%" height="250" src="https://www.youtube.com/embed/OT5iufs218g" frameBorder="0" allowFullScreen></iframe>
         <LatestNews />
 
         <div className="about">
