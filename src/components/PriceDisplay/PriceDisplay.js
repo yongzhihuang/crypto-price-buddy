@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import AnimatedNumber from 'react-animated-number';
 import axios from 'axios';
 import './PriceDisplay.css';
 
@@ -25,7 +26,7 @@ class PriceDisplay extends Component {
     axios.get(`https://api.gdax.com/products/${currency}/ticker`)
     .then((res) => {
       if (res.data.price) {
-        const price = round(res.data.price);
+        const price = res.data.price;
         this.setState({
           price
         });
@@ -70,7 +71,22 @@ class PriceDisplay extends Component {
 
     return (
       <div className="price-display">
-        <div className="price"><a href={`https://www.gdax.com/trade/${currency}`} target="_blank" rel="noopener noreferrer"><span className="currency-symbol">{symbol}</span>{this.state.price}</a></div>
+        <div className="price">
+          <a href={`https://www.gdax.com/trade/${currency}`} target="_blank" rel="noopener noreferrer"><span className="currency-symbol">{symbol}</span>
+            <AnimatedNumber component="text" value={this.state.price}
+              style={{
+                  transition: '0.8s ease-out',
+                  transitionProperty:
+                      'background-color, color, opacity'
+              }}
+              frameStyle={perc => (
+                  perc === 100 ? {} : {backgroundColor: '#344e6b'}
+              )}
+              duration={500}
+              formatValue={n => round(n)}
+            />
+          </a>
+        </div>
 
         <AskBids currency={currency} />
         <DailyStats currency={currency} />

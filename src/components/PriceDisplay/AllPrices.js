@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import AnimatedNumber from 'react-animated-number';
 import axios from 'axios';
 import P from 'bluebird';
 import './AllPrices.css';
@@ -56,12 +57,26 @@ class AllPrices extends Component {
   render() {
     const priceDisplay = this.state.currenciesData.map((currency, idx) => {
       if (currency) {
+        const price = round(currency.price);
         return (
           <li className="all-prices" key={idx}>
             <div className="all-currency-symbol">
             <img alt={currency.symbol} src={this.state.currencyLogos[currency.symbol]} /> {currency.symbol}
             </div>
-            <a className="all-currency-price" href={`https://www.gdax.com/trade/${currency.symbol}`} target="_blank" rel="noopener noreferrer"><span className="currency-symbol">$</span>{round(currency.price)}</a>
+            <a className="all-currency-price" href={`https://www.gdax.com/trade/${currency.symbol}`} target="_blank" rel="noopener noreferrer"><span className="currency-symbol">
+              $</span><AnimatedNumber component="text" value={price}
+              style={{
+                  transition: '0.8s ease-out',
+                  transitionProperty:
+                      'background-color, color, opacity'
+              }}
+              frameStyle={perc => (
+                  perc === 100 ? {} : {backgroundColor: '#344e6b'}
+              )}
+              duration={300}
+              formatValue={n => round(n)}
+            />
+            </a>
           </li>
         );
       }
