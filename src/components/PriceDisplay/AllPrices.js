@@ -57,7 +57,12 @@ class AllPrices extends Component {
   render() {
     const priceDisplay = this.state.currenciesData.map((currency, idx) => {
       if (currency) {
+        let bgColor = '#40a740';
         const price = Number(currency.price);
+        if (window.localStorage[`all${currency}`] && Number(window.localStorage[`all${currency}`]) < price) {
+          bgColor = '#e04242';
+        }
+        window.localStorage[`all${currency}`] = price;
         return (
           <li className="all-prices" key={idx}>
             <div className="all-currency-symbol">
@@ -71,7 +76,7 @@ class AllPrices extends Component {
                       'background-color, opacity'
               }}
               frameStyle={perc => (
-                  perc === 100 ? {} : {backgroundColor: '#344e6b'}
+                  perc === 100 ? {} : {backgroundColor: bgColor}
               )}
               duration={700}
               formatValue={(n) => {

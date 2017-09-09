@@ -69,21 +69,31 @@ class PriceDisplay extends Component {
       return <AllPrices />;
     }
 
+    let bgColor = '#40a740';
+    const price = Number(this.state.price);
+    if (window.localStorage[currency] && Number(window.localStorage[currency]) < price) {
+      bgColor = '#e04242';
+    }
+    window.localStorage[currency] = price;
+
     return (
       <div className="price-display">
         <div className="price">
           <a href={`https://www.gdax.com/trade/${currency}`} target="_blank" rel="noopener noreferrer"><span className="currency-symbol">{symbol}</span>
-            <AnimatedNumber component="text" value={this.state.price}
+            <AnimatedNumber component="text" value={price}
               style={{
                   transition: '0.8s ease-out',
                   transitionProperty:
                       'background-color, color, opacity'
               }}
               frameStyle={perc => (
-                  perc === 100 ? {} : {backgroundColor: '#344e6b'}
+                  perc === 100 ? {} : {backgroundColor: bgColor}
               )}
               duration={500}
-              formatValue={n => round(n)}
+              formatValue={(n) => {
+                console.log(n);
+                return round(n);
+              }}
             />
           </a>
         </div>
