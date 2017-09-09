@@ -5,7 +5,6 @@ import PriceDisplay from './components/PriceDisplay/PriceDisplay';
 import TopCrypto from './components/TopCrypto/TopCrypto';
 import LatestNews from './components/LatestNews/LatestNews';
 
-
 class App extends Component {
   constructor(props) {
     super(props);

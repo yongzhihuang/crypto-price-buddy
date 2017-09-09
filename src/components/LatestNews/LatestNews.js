@@ -13,7 +13,7 @@ class LatestNews extends Component {
   }
 
   fetchNews() {
-    axios.get(`https://www.reddit.com/r/ethtrader+bitcoin+litecoin.json`)
+    axios.get(`https://www.reddit.com/r/ethtrader+bitcoin+litecoin+ethereum.json`)
     .then((res) => {
       const data = res.data;
       if (data) {
@@ -50,7 +50,7 @@ class LatestNews extends Component {
     });
 
     return (
-      <div className="top-crypto">
+      <div className="latest-news">
         <h2 className="top-title-label">Latest Crypto News</h2>
         <table className="table table-hover top-table">
           <thead>

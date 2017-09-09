@@ -1,0 +1,25 @@
+.nav-menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333333;
+}
+
+.nav-menu li {
+  float: left;
+  width: 30%;
+  border-right: solid 1px white;
+}
+
+.nav-menu li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 5px;
+  text-decoration: none;
+}
+
+.nav-menu li a:hover {
+  background-color: #111111;
+}
