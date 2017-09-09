@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import AnimatedNumber from 'react-animated-number';
 import axios from 'axios';
 import './TopCrypto.css';
 
@@ -50,47 +49,11 @@ class TopCrypto extends Component {
         <tr key={index}>
           <td>{coin.rank}</td>
           <td>{coin.name}</td>
-          <td>$<AnimatedNumber component="text" value={coin.price_usd}
-              style={{
-                  transition: '0.8s ease-out',
-                  transitionProperty:
-                      'background-color, color, opacity'
-              }}
-              frameStyle={perc => (
-                  perc === 100 ? {} : {backgroundColor: '#344e6b'}
-              )}
-              duration={300}
-              formatValue={n => round(n)}
-            />
-          </td>
+          <td>${round(coin.price_usd)}</td>
           <td className={priceClassName}>
-            <span>{plusOrMinus}</span>
-            <AnimatedNumber component="text" value={coin.percent_change_24h}
-              style={{
-                  transition: '0.8s ease-out',
-                  transitionProperty:
-                      'background-color, color, opacity'
-              }}
-              frameStyle={perc => (
-                  perc === 100 ? {} : {backgroundColor: '#344e6b'}
-              )}
-              duration={500}
-              formatValue={n => round(n)}
-            />%
+            <span>{plusOrMinus}</span>{coin.percent_change_24h}%
           </td>
-          <td>
-            <AnimatedNumber component="text" value={coin.market_cap_usd}
-              style={{
-                  transition: '0.8s ease-out',
-                  transitionProperty:
-                      'background-color, color, opacity'
-              }}
-              frameStyle={perc => (
-                  perc === 100 ? {} : {backgroundColor: '#344e6b'}
-              )}
-              duration={500}
-              formatValue={n => numberWithCommas(n)}
-            /></td>
+          <td>${numberWithCommas(coin.market_cap_usd)}</td>
         </tr>
       );
     })

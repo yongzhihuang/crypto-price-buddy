@@ -49,7 +49,7 @@ class App extends Component {
         </select>
 
         <div className="display-notice">
-          Note: This site is best viewed on a small screen or mobile device.
+          Note: This App is best viewed on a small screen or mobile device. Add it to your device homepage to display as an App.
         </div>
 
         <PriceDisplay currency={this.state.currencyType} />

@@ -68,12 +68,12 @@ class AllPrices extends Component {
               style={{
                   transition: '0.8s ease-out',
                   transitionProperty:
-                      'background-color, color, opacity'
+                      'background-color, opacity'
               }}
               frameStyle={perc => (
                   perc === 100 ? {} : {backgroundColor: '#344e6b'}
               )}
-              duration={300}
+              duration={700}
               formatValue={(n) => {
                 return round(n);
               }}
