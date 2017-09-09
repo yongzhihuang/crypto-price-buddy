@@ -57,7 +57,7 @@ class AllPrices extends Component {
   render() {
     const priceDisplay = this.state.currenciesData.map((currency, idx) => {
       if (currency) {
-        const price = round(currency.price);
+        const price = Number(currency.price);
         return (
           <li className="all-prices" key={idx}>
             <div className="all-currency-symbol">
@@ -74,7 +74,9 @@ class AllPrices extends Component {
                   perc === 100 ? {} : {backgroundColor: '#344e6b'}
               )}
               duration={300}
-              formatValue={n => round(n)}
+              formatValue={(n) => {
+                return round(n);
+              }}
             />
             </a>
           </li>
