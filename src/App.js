@@ -22,7 +22,7 @@ class App extends Component {
         'ltc-usd',
         'ltc-eur'
       ],
-      currencyType: window.localStorage.selectedCurrency || 'eth-usd'
+      currencyType: window.localStorage.selectedCurrency || 'all'
     };
   }
 
@@ -54,13 +54,11 @@ class App extends Component {
 
         <PriceDisplay currency={this.state.currencyType} />
         <TopCrypto />
-        <iframe title="yt-embed-crypto" width="100%" height="250" src="https://www.youtube.com/embed/OT5iufs218g" frameBorder="0" allowFullScreen></iframe>
+        <a href="http://cryptodam.us" target="_blank" rel="noopener noreferrer"><img src="https://i.imgur.com/3BVkvMh.png" width="100%" alt="Join Cryptodamus Community for free" /></a>
         <LatestNews />
 
         <div className="about">
-          <p>Donate ETH: 0x79aCad1654fd277096571E536b9Bd49b33c024e4</p>
-          <p>Don't forget to add us to home screen</p>
-          <p>Made by <a href="https://www.twitter.com/whyzhi">@whyzhi</a></p>
+        <iframe title="yt-embed-crypto" width="100%" height="250" src="https://www.youtube.com/embed/OT5iufs218g" frameBorder="0" allowFullScreen></iframe>
         </div>
       </div>
     );

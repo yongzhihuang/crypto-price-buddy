@@ -91,7 +91,6 @@ class PriceDisplay extends Component {
               )}
               duration={500}
               formatValue={(n) => {
-                console.log(n);
                 return round(n);
               }}
             />

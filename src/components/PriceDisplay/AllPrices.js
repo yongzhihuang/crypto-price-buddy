@@ -13,9 +13,10 @@ class AllPrices extends Component {
     this.state = {
       currenciesData: [],
       currencyLogos: {
-        'btc-usd': 'https://files.coinmarketcap.com/static/img/coins/32x32/bitcoin.png',
-        'eth-usd': 'https://files.coinmarketcap.com/static/img/coins/32x32/ethereum.png',
-        'ltc-usd': 'https://files.coinmarketcap.com/static/img/coins/32x32/litecoin.png'
+        'btc-usd': 'https://i.imgur.com/nflZcNf.png',
+        'bch-usd': 'https://i.imgur.com/yGhzOJ3.png',
+        'eth-usd': 'https://i.imgur.com/WCAeltG.png',
+        'ltc-usd': 'https://i.imgur.com/kunCf9F.png'
       }
     }
   }
@@ -28,7 +29,8 @@ class AllPrices extends Component {
   }
 
   fetchALLPrices() {
-    const currencies = ['btc-usd', 'eth-usd', 'ltc-usd'];
+    clearTimeout(this.fetchRefresh);
+    const currencies = ['btc-usd', 'bch-usd', 'eth-usd', 'ltc-usd'];
     P.all(currencies.map((currency) => {
       return this.getSingleCurrencyData(currency);
     }))
