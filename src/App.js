@@ -54,11 +54,11 @@ class App extends Component {
 
         <PriceDisplay currency={this.state.currencyType} />
         <TopCrypto />
-        <a href="http://cryptodam.us" target="_blank" rel="noopener noreferrer"><img src="https://i.imgur.com/3BVkvMh.png" width="100%" alt="Join Cryptodamus Community for free" /></a>
+        <iframe title="yt-embed-crypto" width="100%" height="250" src="https://www.youtube.com/embed/OT5iufs218g" frameBorder="0" allowFullScreen></iframe>
         <LatestNews />
 
         <div className="about">
-        <iframe title="yt-embed-crypto" width="100%" height="250" src="https://www.youtube.com/embed/OT5iufs218g" frameBorder="0" allowFullScreen></iframe>
+          <a href="http://cryptodam.us" target="_blank" rel="noopener noreferrer"><img src="https://i.imgur.com/3BVkvMh.png" width="100%" alt="Join Cryptodamus Community for free" /></a>
         </div>
       </div>
     );
