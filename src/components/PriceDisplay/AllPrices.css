@@ -16,6 +16,7 @@
 }
 
 .all-currency-symbol {
+  cursor: pointer;
   font-size: 16px;
   margin-bottom: -25px;
   font-weight: bold;
