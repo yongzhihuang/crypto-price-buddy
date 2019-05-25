@@ -3,6 +3,7 @@ import AnimatedNumber from 'react-animated-number';
 import axios from 'axios';
 import P from 'bluebird';
 import './AllPrices.css';
+import AskBids from './AskBids';
 
 import { round } from '../../utils/priceFormatter';
 
@@ -101,6 +102,7 @@ class AllPrices extends Component {
               }}
             />
             </a>
+            <AskBids currency={currency.symbol} />
           </li>
         );
       }

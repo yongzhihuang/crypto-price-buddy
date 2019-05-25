@@ -1,21 +1,4 @@
 .askbids {
-  background: white;
-  padding: 5px;
-  margin-bottom: 20px;
-  font-weight: bold;
-  border-radius: 5px;
-}
-
-.bids {
-  color: green;
-}
-
-.asks {
-  color: red;
-}
-
-.bids,
-.asks {
-  margin: 3px;
-  font-family: arial;
+  position: relative;
+  top: -15px;
 }

@@ -23,6 +23,8 @@ class AskBids extends Component {
     .then((res) => {
       const data = res.data;
       if (data) {
+
+ console.log("data ", data);
         this.setState({
           askBids: {
             asksPrice: round(data.asks[0][0]),
@@ -61,10 +63,10 @@ class AskBids extends Component {
     }
 
     const symbol = (this.props.currency.indexOf('-eur') === -1) ? '$' : '€';
+    const askBidDisplay = parseInt(askBids.bidsAmount, 10) < parseInt(askBids.asksAmount, 10) ? `Sell Wall: ${askBids.asksAmount} | Price: ${symbol}${askBids.asksPrice}` : `Buy Wall: ${askBids.bidsAmount} | Price: ${symbol}${askBids.bidsPrice}`
     return (
       <div className="askbids">
-        <div className="asks">Sells: {symbol}{askBids.asksPrice} / {askBids.asksAmount} Orders</div>
-        <div className="bids">Buys: {symbol}{askBids.bidsPrice} / {askBids.bidsAmount} Orders</div>
+        {askBidDisplay}
       </div>
     );
   }
