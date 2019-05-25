@@ -14,11 +14,25 @@ class AllPrices extends Component {
       currenciesData: [],
       currencyLogos: {
         'btc-usd': 'https://i.imgur.com/nflZcNf.png',
-        'bch-usd': 'https://i.imgur.com/yGhzOJ3.png',
         'eth-usd': 'https://i.imgur.com/WCAeltG.png',
         'ltc-usd': 'https://i.imgur.com/kunCf9F.png'
-      }
+      },
+      titleBarCurrency: 'eth-usd'
     }
+
+    this.setTitleBarPrices = this.setTitleBarPrices.bind(this);
+  }
+
+  setTitleBarPrices(data, currency) {
+    const titleBarPrice = data.filter((val) => val.symbol === currency);
+
+    if (titleBarPrice.length) {
+      document.title = `${round(titleBarPrice[0].price)} - ${this.state.titleBarCurrency}`;
+    }
+
+    this.setState({
+      titleBarCurrency: currency
+    });
   }
 
   getSingleCurrencyData(currency) {
@@ -30,11 +44,12 @@ class AllPrices extends Component {
 
   fetchALLPrices() {
     clearTimeout(this.fetchRefresh);
-    const currencies = ['btc-usd', 'bch-usd', 'eth-usd', 'ltc-usd'];
+    const currencies = ['btc-usd', 'eth-usd', 'ltc-usd'];
     P.all(currencies.map((currency) => {
       return this.getSingleCurrencyData(currency);
     }))
     .then((result) => {
+      this.setTitleBarPrices(result, this.state.titleBarCurrency)
       this.setState({
         currenciesData: result
       });
@@ -67,7 +82,7 @@ class AllPrices extends Component {
         window.localStorage[`all${currency}`] = price;
         return (
           <li className="all-prices" key={idx}>
-            <div className="all-currency-symbol">
+            <div className="all-currency-symbol" onClick={() => this.setTitleBarPrices(this.state.currenciesData, currency.symbol)}>
             <img alt={currency.symbol} src={this.state.currencyLogos[currency.symbol]} /> {currency.symbol}
             </div>
             <a className="all-currency-price" href={`https://www.gdax.com/trade/${currency.symbol}`} target="_blank" rel="noopener noreferrer"><span className="currency-symbol">

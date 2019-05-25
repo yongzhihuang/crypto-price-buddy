@@ -48,10 +48,6 @@ class App extends Component {
           {optionsDOM}
         </select>
 
-        <div className="display-notice">
-          Note: This App is best viewed on a small screen or mobile device. Add it to your device homepage to display as an App.
-        </div>
-
         <PriceDisplay currency={this.state.currencyType} />
         <TopCrypto />
         <iframe title="yt-embed-crypto" width="100%" height="250" src="https://www.youtube.com/embed/OT5iufs218g" frameBorder="0" allowFullScreen></iframe>
