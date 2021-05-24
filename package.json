@@ -7,7 +7,7 @@
     "axios": "^0.16.2",
     "bluebird": "^3.5.0",
     "coingecko-api": "^1.0.10",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.21",
     "moment": "^2.18.1",
     "react": "^15.6.1",
     "react-animated-number": "^0.4.3",
