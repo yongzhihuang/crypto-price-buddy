@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "/widget",
   "dependencies": {
-    "axios": "^0.16.2",
+    "axios": "^0.21.1",
     "bluebird": "^3.5.0",
     "coingecko-api": "^1.0.10",
     "lodash": "^4.17.4",
