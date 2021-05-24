@@ -37,7 +37,7 @@ class AllPrices extends Component {
   }
 
   getSingleCurrencyData(currency) {
-    return axios.get(`https://api.gdax.com/products/${currency}/ticker`)
+    return axios.get(`https://api.pro.coinbase.com/products/${currency}/ticker`)
       .then((data) => {
         return {...data.data, symbol: currency};
       })

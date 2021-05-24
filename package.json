@@ -2,20 +2,34 @@
   "name": "cryptodamus",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/widget",
   "dependencies": {
     "axios": "^0.16.2",
     "bluebird": "^3.5.0",
+    "coingecko-api": "^1.0.10",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
     "react": "^15.6.1",
     "react-animated-number": "^0.4.3",
     "react-dom": "^15.6.1",
-    "react-scripts": "1.0.11"
+    "react-scripts": "4.0.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

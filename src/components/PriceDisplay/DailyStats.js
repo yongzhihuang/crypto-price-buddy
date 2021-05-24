@@ -15,7 +15,7 @@ class DailyStats extends Component {
 
   fetchDailyStats(props) {
     const currency = props.currency || 'eth-usd';
-    axios.get(`https://api.gdax.com/products/${currency}/stats`)
+    axios.get(`https://api.pro.coinbase.com/products/${currency}/stats`)
     .then((res) => {
       const data = res.data;
       if (data) {

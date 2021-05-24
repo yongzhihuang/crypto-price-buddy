@@ -23,7 +23,7 @@ class PriceDisplay extends Component {
   fetchPrice(props) {
     const currency = props.currency || 'eth-usd';
 
-    axios.get(`https://api.gdax.com/products/${currency}/ticker`)
+    axios.get(`https://api.pro.coinbase.com/products/${currency}/ticker`)
     .then((res) => {
       if (res.data.price) {
         const price = res.data.price;

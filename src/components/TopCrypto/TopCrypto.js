@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
+import CoinGecko from 'coingecko-api';
+
 import axios from 'axios';
 import './TopCrypto.css';
 
 import { round, numberWithCommas } from '../../utils/priceFormatter';
+
+const CoinGeckoClient = new CoinGecko();
 
 class TopCrypto extends Component {
   constructor(props) {
@@ -14,17 +18,15 @@ class TopCrypto extends Component {
   }
 
   fetchTopCoins() {
-    const COINMARKETCAP_API_URI = 'https://api.coinmarketcap.com';
-
-    axios.get(`${COINMARKETCAP_API_URI}/v1/ticker/?limit=10`)
-    .then((resp) => {
-      this.coins = resp.data;
-      this.setState({
-        coins: resp.data
-      })
+    CoinGeckoClient.coins.all()
+    .then((coins) => {
+        coins = coins.data.slice(0, 10);
+        this.setState({
+          coins
+        });
     })
     .catch((error) => {
-      console.error(error);
+        console.log(error);
     });
   }
 
@@ -43,17 +45,18 @@ class TopCrypto extends Component {
     }
 
     const coinRows = coins.map((coin, index) => {
-      const plusOrMinus = (coin.percent_change_24h > 0) ? '+' : '';
-      const priceClassName = (coin.percent_change_24h > 0) ? 'green' : 'red';
+      const marketData = coin.market_data;
+      const plusOrMinus = (marketData.price_change_percentage_24h > 0) ? '+' : '';
+      const priceClassName = (marketData.price_change_percentage_24h > 0) ? 'green' : 'red';
       return (
         <tr key={index}>
-          <td>{coin.rank}</td>
+          <td>{index++}</td>
           <td>{coin.name}</td>
-          <td>${round(coin.price_usd)}</td>
+          <td>${round(marketData.current_price.usd)}</td>
           <td className={priceClassName}>
-            <span>{plusOrMinus}</span>{coin.percent_change_24h}%
+            <span>{plusOrMinus}</span>{marketData.price_change_percentage_24h}%
           </td>
-          <td>${numberWithCommas(coin.market_cap_usd)}</td>
+          <td>${numberWithCommas(marketData.market_cap.usd)}</td>
         </tr>
       );
     })

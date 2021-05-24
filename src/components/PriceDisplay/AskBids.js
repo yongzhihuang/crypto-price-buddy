@@ -19,12 +19,10 @@ class AskBids extends Component {
 
   fetchAskBids(props) {
     const currency = props.currency || 'eth-usd';
-    axios.get(`https://api.gdax.com/products/${currency}/book`)
+    axios.get(`https://api.pro.coinbase.com/products/${currency}/book`)
     .then((res) => {
       const data = res.data;
       if (data) {
-
- console.log("data ", data);
         this.setState({
           askBids: {
             asksPrice: round(data.asks[0][0]),
