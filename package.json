@@ -8,7 +8,7 @@
     "bluebird": "^3.5.0",
     "coingecko-api": "^1.0.10",
     "lodash": "^4.17.4",
-    "moment": "^2.18.1",
+    "moment": "^2.29.4",
     "react": "^15.6.1",
     "react-animated-number": "^0.4.3",
     "react-dom": "^15.6.1",
